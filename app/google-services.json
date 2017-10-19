@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1072373959063",
+    "firebase_url": "https://projectwadeeny.firebaseio.com",
+    "project_id": "projectwadeeny",
+    "storage_bucket": "projectwadeeny.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072373959063:android:1d5d722210f6e39f",
+        "android_client_info": {
+          "package_name": "com.example.magic.projectwadeeny"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072373959063-6982m7rmnqbq1mpdk2u5q90prk8tcd0n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.magic.projectwadeeny",
+            "certificate_hash": "3b9b142e388b890ce51756f15e71f05c0f32d123"
+          }
+        },
+        {
+          "client_id": "1072373959063-12kn09lso29bmuae0femub51jcpmgsji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBBi19nG1H5CssEnikyuUk2uJgtDpTR08"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072373959063-12kn09lso29bmuae0femub51jcpmgsji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

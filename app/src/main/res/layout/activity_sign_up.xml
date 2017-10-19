@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.magic.projectwadeeny.SignUp"
+
+    android:background="#3764f9"
+    >
+
+    <LinearLayout
+
+        android:background="#3764f9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
+        <EditText
+
+            android:background="#f2f2f2"
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:hint="E-Mail"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:background="#f2f2f2"
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+
+        <EditText
+            android:background="#f2f2f2"
+
+            android:id="@+id/password2"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:hint="password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:background="#fb3638e9"
+            android:id="@+id/submitBtn"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textSize="30dp"
+            android:textColor="#fff"
+            />
+        />
+
+    </LinearLayout>
+</RelativeLayout>
