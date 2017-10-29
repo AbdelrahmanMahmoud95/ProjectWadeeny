@@ -14,6 +14,7 @@ public class Home extends AppCompatActivity {
 
     Button upload;
     EditText txt;
+    EditText txtKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +23,24 @@ public class Home extends AppCompatActivity {
 
         upload = (Button) findViewById(R.id.uploadBtn);
         txt = (EditText) findViewById(R.id.uploaded);
-
-        final String mtxt = txt.getText().toString();
+        txtKey = (EditText)findViewById(R.id.textkey);
+       // final String mtxt = txt.getText().toString();
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("projectwadeeny");
 
-        Toast.makeText(this, myRef.toString(), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, myRef.toString(), Toast.LENGTH_SHORT).show();
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.setValue("Hello World");
+                String value = txt.getText().toString();
+                String key = txtKey.getText().toString();
+                DatabaseReference mychild =myRef.child(key);
+                mychild.setValue(value);
+
+
             }
         });
 

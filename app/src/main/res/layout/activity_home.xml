@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.magic.projectwadeeny.Home">
 
+    <EditText
+        android:id="@+id/textkey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="30dp"
+        android:hint="insert key"
+        />
 
     <EditText
         android:id="@+id/uploaded"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp" />
+        android:layout_below="@+id/textkey"
+        android:layout_margin="30dp"
+        android:hint="Value"
+        />
+
 
     <Button
         android:id="@+id/uploadBtn"
