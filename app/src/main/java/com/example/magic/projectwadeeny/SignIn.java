@@ -1,5 +1,7 @@
 package com.example.magic.projectwadeeny;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,8 @@ public class SignIn extends AppCompatActivity {
     private EditText email;
     private EditText password;
     FirebaseAuth mAuth;
+
+    ProgressDialog dialog;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
@@ -36,14 +40,22 @@ public class SignIn extends AppCompatActivity {
         email = (EditText) findViewById(R.id.emailin);
         password = (EditText) findViewById(R.id.passwordin);
 
+        dialog = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
+      if (mAuth.getCurrentUser()!=null){
+            finish();
+            startActivity(new Intent(getApplicationContext(),Home.class));
+        }
         signin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                dialog.setMessage("loading");
+                dialog.show();
                 String emailSt = email.getText().toString().trim();
                 String passwordSt = password.getText().toString().trim();
                 if (TextUtils.isEmpty(emailSt) || TextUtils.isEmpty(passwordSt)) {
                     Toast.makeText(SignIn.this, "Fill Missing Fields", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                     return;
                 }
                 mAuth.signInWithEmailAndPassword(emailSt, passwordSt)
@@ -54,39 +66,20 @@ public class SignIn extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(SignIn.this, task.getException().getMessage().toString(),
                                             Toast.LENGTH_SHORT).show();
-                                }else {
+                                    dialog.dismiss();
+                                } else {
                                     finish();
+                                    dialog.dismiss();
                                     Intent home = new Intent(SignIn.this, Home.class);
                                     startActivity(home);
                                 }
 
-
-
                             }
                         });
-
-
-
             }
 
         });
 
-
-        // dah ebn ws5a msh sh3'al
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-
-                    finish();
-                    Intent home = new Intent(SignIn.this, Home.class);
-                    startActivity(home);
-
-
-                }
-            }
-        };
 
     }
 }

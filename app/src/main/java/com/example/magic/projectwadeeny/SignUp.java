@@ -1,5 +1,6 @@
 package com.example.magic.projectwadeeny;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class SignUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,24 +35,29 @@ public class SignUp extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         passwordConf = (EditText) findViewById(R.id.password2);
-
+        dialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog.setMessage("loading");
+                dialog.show();
                 final String emailStr = email.getText().toString().trim();
                 String passwordStr = password.getText().toString().trim();
                 String passwordConfStr = passwordConf.getText().toString().trim();
 
                 if (TextUtils.isEmpty(emailStr) || TextUtils.isEmpty(passwordStr) || TextUtils.isEmpty(passwordConfStr)) {
                     Toast.makeText(SignUp.this, "Fill Missing Fields", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                     return;
+
                 }
 
 
                 if (!(passwordStr.equals(passwordConfStr))) {
                     Toast.makeText(SignUp.this, "Password Don't Match", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                     return;
                 }
 
@@ -63,8 +69,10 @@ public class SignUp extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(SignUp.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
                                 } else {
                                     Toast.makeText(SignUp.this, "User " + emailStr + " is signed Up successfully", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
                                 }
 
 
@@ -74,22 +82,6 @@ public class SignUp extends AppCompatActivity {
 
             }
         });
-
-
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-
-                    finish();
-                    Intent home = new Intent(SignUp.this, Home.class);
-                    startActivity(home);
-
-
-                }
-            }
-        };
 
 
     }

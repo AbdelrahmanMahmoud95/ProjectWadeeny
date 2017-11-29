@@ -4,33 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.magic.projectwadeeny.Home">
+    tools:context="com.example.magic.projectwadeeny.Home"
 
-    <EditText
-        android:id="@+id/textkey"
+    >
+    <TextView
+        android:id="@+id/_4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
 
-        android:layout_margin="30dp"
-        android:hint="insert key"
-        />
-
-    <EditText
-        android:id="@+id/uploaded"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textkey"
-        android:layout_margin="30dp"
-        android:hint="Value"
-        />
-
-
-    <Button
-        android:id="@+id/uploadBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/uploaded"
-        android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:text="upload" />
+        />
+
+    <TextView
+        android:id="@+id/_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@id/_4"
+        android:hint="loading ... " />
+
+    <TextView
+        android:id="@+id/_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/_1"
+        android:layout_margin="20dp"
+        android:hint="loading ... " />
+
+    <TextView
+        android:id="@+id/_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/_2"
+        android:layout_margin="20dp"
+        android:hint="loading ... " />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:text="sign out"
+        android:id="@+id/btnout"
+        android:padding="5dp"
+        android:layout_margin="20dp"
+        android:layout_below="@id/_3"
+        />
+
+
+
+
 </RelativeLayout>
+
