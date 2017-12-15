@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,9 +21,7 @@ import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-
-    Button signOut;
+    private Button signOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,31 +56,28 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
                 for (DataSnapshot s : dataSnapshot.getChildren()) {
 
-                    //  TODO: 11/19/2017 Data Casting   ( Handel Exceptions )
-               try {
-                    Log.e("Err", s.getValue().toString());
-                    Data mData = s.getValue(Data.class);
+                    try {
+                        Data mData = s.getValue(Data.class);
 
-                    textView_1.append(mData.getStartingPoint());
+                        textView_1.append(mData.getStartingPoint());
 
-                    ArrayList<String> path = mData.getPath();
+                        ArrayList<String> path = mData.getPath();
 
-                    for (int i = 0; i < path.size(); i++) {
-                        textView_3.append(path.get(i) + "\n");
+                        for (int i = 0; i < path.size(); i++) {
+                            textView_3.append(path.get(i) + "\n");
 
+                        }
+                        textView_2.append(mData.getEndingPoint());
+                    } catch (Exception e) {
+                        Toast.makeText(Home.this, "Error ! " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                    textView_2.append(mData.getEndingPoint());
-               } catch (Exception e) {
-                    e.printStackTrace();
-                }
                 }
 
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-
-
+                Toast.makeText(Home.this, "Error ! " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -4,17 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#de000000"
-    tools:context="com.example.magic.projectwadeeny.MainActivity"
-    >
+    tools:context="com.example.magic.projectwadeeny.MainActivity">
+
 
     <LinearLayout
-
-        android:layout_width="380dp"
-        android:layout_height="520dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="#4486d1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
 
@@ -22,16 +17,11 @@
             android:id="@+id/textView"
             android:layout_width="280dp"
             android:layout_height="70dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            android:background="#333874"
-            android:fontFamily="sans-serif-medium"
-            android:padding="16dp"
-            android:text="TransPoint"
+            android:layout_margin="20dp"
+            android:layout_gravity="center|top"
+            android:background="@drawable/border"
+            android:text="@string/app_name"
             android:textAlignment="center"
-            android:textColor="#f7f7f9"
             android:textSize="30dp"
             android:textStyle="bold" />
 
@@ -41,16 +31,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="7dp"
-            android:text="where do you go ?"
+            android:text="@string/slogan"
             android:textAlignment="center"
-            android:textColor="#f2f2f2"
             android:textSize="25dp" />
 
         <ImageView
             android:id="@+id/myimage"
             android:layout_width="250dp"
+            android:layout_gravity="center"
             android:layout_height="170dp"
-            android:layout_marginLeft="64dp"
             android:src="@drawable/bus5"
 
             />
@@ -72,8 +61,7 @@
                 android:padding="20dp"
                 android:text="Sign Up"
                 android:textColor="#fff"
-                android:textSize="18dp"
-               />
+                android:textSize="18dp" />
 
             <Button
 

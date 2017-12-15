@@ -28,16 +28,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        if (!isConnected(MainActivity.this)) buildDialog(MainActivity.this).show();
-        else {
 
-        }
+
+        setContentView(R.layout.activity_main);
+
+        if (!isConnected(MainActivity.this)) buildDialog(MainActivity.this).show();
+
         mAuth = FirebaseAuth.getInstance();
 
         if (mAuth.getCurrentUser() != null) {
-            //finish();
-            startActivity(new Intent(getApplicationContext(), Home.class));
+            startActivity(new Intent(this, Home.class));
+            finish();
         }
 
         signIn = (Button) findViewById(R.id.signin);
@@ -69,10 +70,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public AlertDialog.Builder buildDialog(Context c) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle("No Internet Connection");
-        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to Exit");
+        builder.setTitle(R.string.noInternet);
+        builder.setMessage(R.string.noInternetMessage);
 
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -94,11 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Intent signIn = new Intent(MainActivity.this, SignIn.class);
             startActivity(signIn);
-            /*AlertDialog.Builder mbuilder = new AlertDialog.Builder(MainActivity.this);
-            View mview = getLayoutInflater().inflate(R.layout.activity_sign_in, null);
-            mbuilder.setView(mview);
-            AlertDialog alertDialog = mbuilder.create();
-            alertDialog.show();*/
         } else if (view == signUp) {
 
             Intent signUp = new Intent(MainActivity.this, SignUp.class);
