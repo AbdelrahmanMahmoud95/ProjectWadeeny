@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,10 +27,16 @@ public class SignUp extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+
+        LinearLayout contentPain = findViewById(R.id.signupcontentPain);
+        contentPain.setAlpha(0);
+        contentPain.animate().alpha(1.0f).setDuration(2000).start();
 
         submit = (Button) findViewById(R.id.submitBtn);
         email = (EditText) findViewById(R.id.email);
@@ -41,14 +48,14 @@ public class SignUp extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("loading");
+                dialog.setMessage(getString(R.string.loading));
                 dialog.show();
                 final String emailStr = email.getText().toString().trim();
                 String passwordStr = password.getText().toString().trim();
                 String passwordConfStr = passwordConf.getText().toString().trim();
 
                 if (TextUtils.isEmpty(emailStr) || TextUtils.isEmpty(passwordStr) || TextUtils.isEmpty(passwordConfStr)) {
-                    Toast.makeText(SignUp.this, "Fill Missing Fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.fill, Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                     return;
 
@@ -56,7 +63,7 @@ public class SignUp extends AppCompatActivity {
 
 
                 if (!(passwordStr.equals(passwordConfStr))) {
-                    Toast.makeText(SignUp.this, "Password Don't Match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, R.string.noMatch, Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                     return;
                 }
@@ -72,6 +79,8 @@ public class SignUp extends AppCompatActivity {
                                     dialog.dismiss();
                                 } else {
                                     Toast.makeText(SignUp.this, "User " + emailStr + " is signed Up successfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignUp.this, Home.class).setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                    finish();
                                     dialog.dismiss();
                                 }
 

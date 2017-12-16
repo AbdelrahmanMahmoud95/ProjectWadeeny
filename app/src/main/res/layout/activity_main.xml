@@ -4,24 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context="com.example.magic.projectwadeeny.MainActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="25dp"
+        android:background="@drawable/round_rect"
         android:orientation="vertical">
 
 
         <TextView
+
             android:id="@+id/textView"
-            android:layout_width="280dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:layout_margin="20dp"
-            android:layout_gravity="center|top"
-            android:background="@drawable/border"
+            android:padding="20dp"
             android:text="@string/app_name"
-            android:textAlignment="center"
+            android:textColor="#F2FFFFFF"
             android:textSize="30dp"
             android:textStyle="bold" />
 
@@ -30,54 +36,43 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="7dp"
+            android:layout_margin="20dp"
             android:text="@string/slogan"
             android:textAlignment="center"
+            android:textColor="#F2FFFFFF"
             android:textSize="25dp" />
 
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:text="@string/signUp"
+            android:theme="@style/MyButton" />
+
+        <Button
+            android:id="@+id/signin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:text="@string/signIn"
+            android:theme="@style/MyButton" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <ImageView
-            android:id="@+id/myimage"
-            android:layout_width="250dp"
-            android:layout_gravity="center"
-            android:layout_height="170dp"
-            android:src="@drawable/bus5"
-
-            />
-
-
-        <LinearLayout
+            android:id="@+id/lang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/signup"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="112dp"
-                android:layout_marginTop="10dp"
-                android:background="#5c53c9"
-                android:padding="20dp"
-                android:text="Sign Up"
-                android:textColor="#fff"
-                android:textSize="18dp" />
-
-            <Button
-
-                android:id="@+id/signin"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="112dp"
-                android:layout_marginTop="15dp"
-                android:background="#5c53c9"
-                android:padding="20dp"
-                android:text="Sign In"
-                android:textColor="#fff"
-                android:textSize="18dp" />
-
-        </LinearLayout>
-
+            android:layout_gravity="bottom|right"
+            android:src="@drawable/ic_language_black_24dp" />
     </LinearLayout>
 
 </RelativeLayout>

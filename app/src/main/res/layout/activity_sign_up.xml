@@ -4,61 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.magic.projectwadeeny.SignUp"
-
-    android:background="#3764f9"
-    >
+    android:background="@drawable/bg"
+    tools:context="com.example.magic.projectwadeeny.SignUp">
 
     <LinearLayout
-
-        android:background="#3764f9"
+        android:id="@+id/signupcontentPain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="30dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/round_rect"
+        android:orientation="vertical"
+        android:padding="30dp">
 
-        <EditText
-
-            android:background="#f2f2f2"
-            android:id="@+id/email"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:hint="E-Mail"
-            android:inputType="textEmailAddress" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
 
-        <EditText
-            android:background="#f2f2f2"
-            android:id="@+id/password"
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
 
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
 
-        <EditText
-            android:background="#f2f2f2"
+        </android.support.design.widget.TextInputLayout>
 
-            android:id="@+id/password2"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:hint="password"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
+
+            <EditText
+                android:id="@+id/password2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:hint="@string/password_conf"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
 
         <Button
-            android:background="#fb3638e9"
             android:id="@+id/submitBtn"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp"
-            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/submit"
             android:textAllCaps="false"
-            android:textSize="30dp"
-            android:textColor="#fff"
-            />
-        />
+            android:theme="@style/MyButton" />
 
     </LinearLayout>
 </RelativeLayout>

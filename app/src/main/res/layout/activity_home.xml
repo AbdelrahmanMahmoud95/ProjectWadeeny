@@ -4,52 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.magic.projectwadeeny.Home"
+    android:background="#B378071b"
+    tools:context="com.example.magic.projectwadeeny.Home">
 
-    >
-    <TextView
-        android:id="@+id/_4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
 
-        android:layout_margin="20dp"
-        />
-
-    <TextView
-        android:id="@+id/_1"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_below="@id/_4"
-        android:hint="loading ... " />
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/Widget.AppCompat.Light.ActionBar">
 
-    <TextView
-        android:id="@+id/_2"
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+
+        <ImageView
+            android:id="@+id/chngLang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:src="@drawable/ic_language_black_24dp"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/logOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_power_settings_new_black_24dp" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/_1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_margin="20dp"
-        android:hint="loading ... " />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/_2"
-        android:layout_margin="20dp"
-        android:hint="loading ... " />
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:text="sign out"
-        android:id="@+id/btnout"
-        android:padding="5dp"
-        android:layout_margin="20dp"
-        android:layout_below="@id/_3"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white">
 
 
+                <EditText
+                    android:id="@+id/source"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="20dp"
+                    android:hint="@string/from"
+                    android:textColor="@color/white" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white">
 
 
+                <EditText
+                    android:id="@+id/destination"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="20dp"
+                    android:hint="@string/to"
+                    android:textColor="@color/white" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp"
+                android:text="@string/search"
+                android:textSize="19dp"
+                android:theme="@style/MyButton" />
+
+
+            <LinearLayout
+                android:id="@+id/screen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
 

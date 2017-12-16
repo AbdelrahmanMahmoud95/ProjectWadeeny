@@ -4,11 +4,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button signIn;
     private Button signUp;
+    private ImageView changeLang;
     FirebaseAuth mAuth;
 
 
@@ -28,6 +31,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        //load current language
+        SharedPreferences pref = getSharedPreferences("lang", MODE_PRIVATE);
+        SharedPreferences.Editor prefEdit = getSharedPreferences("lang", MODE_PRIVATE).edit();
+        String language = pref.getString("language", "en");
+
+        if (language.equals("en")) {
+            prefEdit.putString("language", "en");
+            prefEdit.apply();
+        } else {
+            prefEdit.putString("language", "ar");
+            prefEdit.apply();
+        }
+        LanSettings.changeLang(language, getBaseContext());
 
 
         setContentView(R.layout.activity_main);
@@ -43,11 +61,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         signIn = (Button) findViewById(R.id.signin);
         signUp = (Button) findViewById(R.id.signup);
-        ImageView myImageView = (ImageView) findViewById(R.id.myimage);
-        myImageView.setImageResource(R.drawable.bus5);
+        changeLang = (ImageView) findViewById(R.id.lang);
+        changeLang.setOnClickListener(this);
         signIn.setOnClickListener(this);
         signUp.setOnClickListener(this);
 
+        signIn.setAlpha(0);
+        signIn.animate().alpha(1.0f).setDuration(4000).start();
+        signUp.setAlpha(0);
+        signUp.animate().alpha(1.0f).setDuration(4000).start();
 
     }
 
@@ -94,12 +116,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view == signIn) {
 
             Intent signIn = new Intent(MainActivity.this, SignIn.class);
+            signIn.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(signIn);
         } else if (view == signUp) {
 
             Intent signUp = new Intent(MainActivity.this, SignUp.class);
+            signUp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(signUp);
 
+        } else if (view == changeLang) {
+
+            SharedPreferences pref = getSharedPreferences("lang", MODE_PRIVATE);
+            SharedPreferences.Editor prefEdit = getSharedPreferences("lang", MODE_PRIVATE).edit();
+            String language = pref.getString("language", "not_Set");
+            if (language.equals("en")) {
+                LanSettings.changeLang("ar", getBaseContext());
+                prefEdit.putString("language", "ar");
+                prefEdit.apply();
+                Intent intent = getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                finish();
+                startActivity(intent);
+
+            } else if (language.equals("ar")) {
+                LanSettings.changeLang("en", getBaseContext());
+                prefEdit.putString("language", "en");
+                prefEdit.apply();
+                Intent intent = getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                finish();
+                startActivity(intent);
+            }
         }
 
 

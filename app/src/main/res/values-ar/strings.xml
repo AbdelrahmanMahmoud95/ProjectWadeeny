@@ -14,6 +14,12 @@
     <string name="noInternet">لا يوجد اتصال بالانترنت</string>
     <string name="noInternetMessage">يجب توفير الاتصال بالانترنت لتتمكن من استخدام التطبيق , اضغط حسناً للخروج</string>
     <string name="ok">حسناً</string>
-
+    <string name="loading">جاري التحميل…</string>
+    <string name="fill">اكمل البيانات</string>
+    <string name="noMatch">كلمه المرور غير مطابقه</string>
+    <string name="bussNum">رقم الحافله :</string>
+    <string name="ticketPrice">سعر التذكره :</string>
+    <string name="path">محطات الحافله :</string>
+    <string name="sorry">عذراً, هذه المنطقه غير متاحه في قاعده البيانات بعد</string>
 
 </resources>

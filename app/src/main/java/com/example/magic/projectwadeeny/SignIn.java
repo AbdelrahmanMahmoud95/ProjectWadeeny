@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,12 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        LinearLayout contentPain = findViewById(R.id.contentPain);
+        contentPain.setAlpha(0);
+        contentPain.animate().alpha(1.0f).setDuration(2000).start();
+
+
         signin = (Button) findViewById(R.id.buttonin);
         email = (EditText) findViewById(R.id.emailin);
         password = (EditText) findViewById(R.id.passwordin);
@@ -43,18 +50,18 @@ public class SignIn extends AppCompatActivity {
         dialog = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
-      if (mAuth.getCurrentUser()!=null){
+        if (mAuth.getCurrentUser() != null) {
             finish();
-            startActivity(new Intent(getApplicationContext(),Home.class));
+            startActivity(new Intent(getApplicationContext(), Home.class));
         }
         signin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                dialog.setMessage("loading");
+                dialog.setMessage(getString(R.string.loading));
                 dialog.show();
                 String emailSt = email.getText().toString().trim();
                 String passwordSt = password.getText().toString().trim();
                 if (TextUtils.isEmpty(emailSt) || TextUtils.isEmpty(passwordSt)) {
-                    Toast.makeText(SignIn.this, "Fill Missing Fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignIn.this, R.string.fill, Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                     return;
                 }
@@ -64,13 +71,14 @@ public class SignIn extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(SignIn.this, task.getException().getMessage().toString(),
+                                    Toast.makeText(SignIn.this, task.getException().getMessage(),
                                             Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
                                 } else {
                                     finish();
                                     dialog.dismiss();
                                     Intent home = new Intent(SignIn.this, Home.class);
+                                    home.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     startActivity(home);
                                 }
 
