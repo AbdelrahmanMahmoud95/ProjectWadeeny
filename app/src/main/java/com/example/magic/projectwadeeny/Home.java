@@ -91,8 +91,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 dialog.show();
                 //todo handel empty fields
                 try {
-                    final String fromStr = from.getText().toString().trim().toLowerCase();
-                    final String toStr = to.getText().toString().trim().toLowerCase();
+                    final String fromStr = from.getText().toString().trim();
+                    final String toStr = to.getText().toString().trim();
                     screen.removeAllViews();
 
                     myRef.addValueEventListener(new ValueEventListener() {
@@ -103,7 +103,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
                             for (DataSnapshot snap : dataSnapshot.getChildren()) {
                                 try {
-                                    Buss currentBuss = snap.getValue(Buss.class);
+                                    Buss currentBus = snap.getValue(Buss.class);
                                     if (TextUtils.isEmpty(fromStr) || TextUtils.isEmpty(toStr)) {
                                         Toast.makeText(Home.this, R.string.fill, Toast.LENGTH_SHORT).show();
                                         dialog.dismiss();
@@ -111,27 +111,27 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                                     }
 
 
-                                    if (currentBuss.getPath().contains(fromStr) && currentBuss.getPath().contains(toStr)) {
+                                    if (currentBus.getPath().toString().contains(fromStr) && currentBus.getPath().toString().contains(toStr)) {
                                         flag = false;
-                                        TextView bussNumber = new TextView(Home.this);
-                                        bussNumber.setTextColor(Color.WHITE);
+                                        TextView busNumber = new TextView(Home.this);
+                                        busNumber.setTextColor(Color.WHITE);
                                         TextView price = new TextView(Home.this);
                                         price.setTextColor(Color.WHITE);
                                         TextView path = new TextView(Home.this);
                                         path.setTextColor(Color.WHITE);
                                         TextView blank = new TextView(Home.this);
                                         blank.setTextColor(Color.WHITE);
-                                        bussNumber.setTextSize(20);
+                                        busNumber.setTextSize(20);
                                         price.setTextSize(20);
                                         path.setTextSize(20);
-                                        String[] array = currentBuss.getPath().toArray(new String[currentBuss.getPath().size()]);
+                                        String[] array = currentBus.getPath().toArray(new String[currentBus.getPath().size()]);
                                         String stations = Arrays.toString(array);
 
-                                        bussNumber.setText(getString(R.string.bussNum) + snap.getKey());
-                                        price.setText(getString(R.string.ticketPrice) + currentBuss.getPrice());
-                                        path.setText(getString(R.string.path) + stations);
+                                        busNumber.setText("Bus Number" +" "+ snap.getKey());
+                                        price.setText("Ticket Price" +" "+ currentBus.getPrice());
+                                        path.setText("Bus Stations" +" "+ stations);
                                         blank.setText("\n");
-                                        screen.addView(bussNumber);
+                                        screen.addView(busNumber);
                                         screen.addView(price);
                                         screen.addView(path);
                                         screen.addView(blank);
